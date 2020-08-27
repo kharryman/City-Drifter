@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "nFHs5e+y/AcOx49Ufp89PXkxTmEf+tAQ8YQLjLjFKgF4tTM/HKULpN2TNRZte8mURjK3Utoj3fI4SZp5OGiVlQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Keith Harryman\\source\\repos\\City Drifter\\City Drifter\\City Drifter.iOS\\City Drifter.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Keith Harryman\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.4.0.991265\\xamarin.forms.4.4.0.991265.nupkg.sha512"
+  ],
+  "logs": []
+}

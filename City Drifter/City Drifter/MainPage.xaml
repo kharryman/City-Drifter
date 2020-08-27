@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="City_Drifter.MainPage">
+
+    <StackLayout HorizontalOptions="CenterAndExpand"
+                 VerticalOptions="CenterAndExpand">
+        <Label x:Name="time"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Text="At runtime, this Label will display the current time.">
+        </Label>
+        <StackLayout Orientation="Horizontal">
+            <Button HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Text="Up"
+                    Clicked="OnUpButton_Clicked"/>
+            <Button HorizontalOptions="Start"
+                    VerticalOptions="End"
+                    Text="Down"
+                    Clicked="OnDownButton_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
