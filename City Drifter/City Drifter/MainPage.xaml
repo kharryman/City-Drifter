@@ -7,15 +7,12 @@
              xmlns:local="clr-namespace:City_Drifter"
              Title="City Drifter"
              x:Class="City_Drifter.MainPage">
-
     <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand"
                  VerticalOptions="Start">
         <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start">
             <Button
                 HorizontalOptions="Start"  VerticalOptions="CenterAndExpand"
-                Text="|||"
-                Clicked="ShowOptionsTab"
-            >
+                Text="|||" Clicked="ShowOptionsTab">
             </Button>
             <Label x:Name="isWalking"
                HorizontalOptions="End"
@@ -31,25 +28,31 @@
                Text="Driving">
             </Label>
         </StackLayout>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
-            <Label x:Name="Map"
+        <Grid Margin="10,10,10,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding ColWidth}"/>
+                <ColumnDefinition Width="0.7*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Column="0" Orientation="Vertical">
+                <ListView x:Name="EmployeeView"
+            ItemsSource="{Binding Employees}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding DisplayName}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
+                <Label x:Name="Map"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"
                Text="MAP">
-            </Label>
-        </StackLayout>
-        <!-- Slide out Menu -->
-        <StackLayout VerticalOptions="FillAndExpand">
-            <Label Text="XFMenu" TextColor="White" FontSize="22" VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 27, 0, 5" />
-
-            <ListView x:Name="MenuListView" ItemsSource="{Binding MainMenuItems}" ItemSelected="MainMenuItem_Selected" VerticalOptions="FillAndExpand" SeparatorVisibility="None" BackgroundColor="#f5f5f5">
-                <!-- Menu background color -->
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ImageCell Text="{Binding Title}" ImageSource="{Binding Icon}" TextColor="Black"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+                </Label>
+            </StackLayout>
+        </Grid>
     </StackLayout>
 </ContentPage>
