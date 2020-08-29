@@ -20,28 +20,11 @@ namespace City_Drifter
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var clockRefresh = new Timer(dueTime: 0, period: 1000, callback: UpdateTimeLabel, state: null);
+            
         }
-
-        private void UpdateTimeLabel(object state = null)
+        private void ShowOptionsTab()
         {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                time.Text = DateTime.Now.AddHours(HourOffset).ToLongTimeString();
-            }
-            );
-        }
-
-        private void OnUpButton_Clicked(object sender, EventArgs e)
-        {
-            HourOffset++;
-            UpdateTimeLabel();
-        }
-
-        private void OnDownButton_Clicked(object sender, EventArgs e)
-        {
-            HourOffset--;
-            UpdateTimeLabel();
+            
         }
     }
 }

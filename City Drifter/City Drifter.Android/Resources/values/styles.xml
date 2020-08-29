@@ -27,4 +27,15 @@
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>
   </style>
+
+	<style name="MyTheme" parent="Theme.AppCompat.Light.NoActuionBar">
+		<item name="colorPrimary">#219653</item>
+		<item name="drawerArrowStyle">@style/MyDrawerArrowStyle</item>
+	</style>
+
+	<style name="MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+		<item name="color">#F5F5F5</item>
+		<item name="spinBars">true</item>
+	</style>
+	
 </resources>

@@ -2,7 +2,6 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\bin\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\bin\Debug\netstandard2.0\City Drifter.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\bin\Debug\netstandard2.0\ref\City Drifter.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\bin\Debug\netstandard2.0\City Drifter.pdb
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\obj\Debug\netstandard2.0\City Drifter.csprojAssemblyReference.cache
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\obj\Debug\netstandard2.0\City Drifter.csproj.CoreCompileInputs.cache
@@ -12,3 +11,4 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\obj\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\obj\Debug\netstandard2.0\City Drifter.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\obj\Debug\netstandard2.0\ref\City Drifter.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\obj\Debug\netstandard2.0\City Drifter.pdb
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter\obj\Debug\netstandard2.0\City Drifter.csprojAssemblyReference.cache
