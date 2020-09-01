@@ -11,6 +11,8 @@ namespace City_Drifter
             InitializeComponent();
 
             MainPage = new MainPage();
+            //var assembliesToInclude = new [] { typeof(Xamarin.Forms.Maps.UWP.MapRenderer).GetTypeInfo().Assembly };
+            //Xamarin.Forms.Forms.Init(e, assembliesToInclude);
         }
 
         protected override void OnStart()

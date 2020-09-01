@@ -1,8 +1,11 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Threading;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Internals;
 
 namespace City_Drifter
@@ -11,7 +14,8 @@ namespace City_Drifter
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
 
-    public class Employee
+
+    public class Location
     {
         public string DisplayName { get; set; }
     }
@@ -20,10 +24,24 @@ namespace City_Drifter
     {
         public string tag = "MainPage";
         public Boolean isTab = false;
-        ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
-        public ObservableCollection<Employee> Employees { get { return employees; } }
+        ObservableCollection<Location> locations = new ObservableCollection<Location>();
+        public ObservableCollection<Location> Locations{ get { return locations; } }
+
+        static LocationDatabase database;
+        public static LocationDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new LocationDatabase();
+                }
+                return database;
+            }
+        }
 
         private int _colWidth= 0;
+
         public int ColWidth
         {
             get => _colWidth;
@@ -37,18 +55,24 @@ namespace City_Drifter
 
         public MainPage()
         {
-            InitializeComponent();
+            InitializeComponent();            
             BindingContext = this;
-            EmployeeView.ItemsSource = employees;
+            //Xamarin.FormsMaps.Init("INSERT_AUTHENTICATION_TOKEN_HERE");
+            LocationView.ItemsSource = locations;
+
+            //selectionView.ItemSource = new[]
+            //{
+            //   "Walking","Driving"
+            //};
 
             // ObservableCollection allows items to be added after ItemsSource
             // is set and the UI will react to changes
-            employees.Add(new Employee { DisplayName = "Rob Finnerty" });
-            employees.Add(new Employee { DisplayName = "Bill Wrestler" });
-            employees.Add(new Employee { DisplayName = "Dr. Geri-Beth Hooper" });
-            employees.Add(new Employee { DisplayName = "Dr. Keith Joyce-Purdy" });
-            employees.Add(new Employee { DisplayName = "Sheri Spruce" });
-            employees.Add(new Employee { DisplayName = "Burt Indybrick" });
+            locations.Add(new Location{ DisplayName = "Madera" });
+            locations.Add(new Location { DisplayName = "Sanger" });
+            locations.Add(new Location { DisplayName = "Reedley" });
+            locations.Add(new Location { DisplayName = "Merced" });
+            locations.Add(new Location { DisplayName = "Kingsburg" });
+            locations.Add(new Location { DisplayName = "Hanford" });
         }
 
         protected override void OnAppearing()
@@ -66,7 +90,7 @@ namespace City_Drifter
             }
             else
             {
-                ColWidth = 0;
+                ColWidth = 1;
             }
             Log.Warning(tag, "ShowOptionsTab called, SET ColWidth = " + ColWidth);
         }

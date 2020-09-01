@@ -31,6 +31,7 @@ item;obj\Release\90\res\values\styles.xml
 LinearLayout;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\39\jl\res\layout\bottomtablayout.xml
 paths;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 resources;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\39\jl\res\values\styles.xml
+resources;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\41\jl\res\values\input_styles.xml
 resources;obj\Release\90\res\values\colors.xml
 resources;obj\Release\90\res\values\styles.xml
 set;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\39\jl\res\anim\enterfromleft.xml
@@ -38,6 +39,7 @@ set;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.
 set;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\39\jl\res\anim\exittoleft.xml
 set;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\39\jl\res\anim\exittoright.xml
 style;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\39\jl\res\values\styles.xml
+style;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\41\jl\res\values\input_styles.xml
 style;obj\Release\90\res\values\styles.xml
 translate;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\39\jl\res\anim\enterfromleft.xml
 translate;C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.Android\obj\Release\90\lp\39\jl\res\anim\enterfromright.xml

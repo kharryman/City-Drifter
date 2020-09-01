@@ -1,0 +1,8 @@
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\actool\_PartialAppManifest.items
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\actool\_BundleResourceWithLogicalName.items
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\coremlc\_PartialAppManifest.items
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\coremlc\_BundleResourceWithLogicalName.items
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\optimized\
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\City Drifter.iOS.csprojAssemblyReference.cache
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\City Drifter.iOS.csproj.CoreCompileInputs.cache
