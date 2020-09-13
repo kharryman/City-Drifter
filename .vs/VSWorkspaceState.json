@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\City Drifter",
-    "\\City Drifter\\City Drifter",
-    "\\City Drifter\\City Drifter.iOS"
+    "\\City Drifter\\City Drifter.Android",
+    "\\City Drifter\\City Drifter.iOS",
+    "\\City Drifter\\City Drifter.iOS\\Assets.xcassets"
   ],
+  "SelectedNode": "\\City Drifter\\City Drifter.iOS\\City Drifter.iOS.csproj",
   "PreviewInSolutionExplorer": false
 }

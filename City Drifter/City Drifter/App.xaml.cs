@@ -6,6 +6,10 @@ namespace City_Drifter
 {
     public partial class App : Application
     {
+        public static double DisplayScreenWidth { get; set; }
+        public static double DisplayScreenHeight = 0f;
+        public static double DisplayScaleFactor = 0f;
+
         public App()
         {
             InitializeComponent();

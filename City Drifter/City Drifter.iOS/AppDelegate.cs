@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using CoreGraphics;
 using Foundation;
+using MapKit;
 using UIKit;
 
 namespace City_Drifter.iOS
@@ -28,5 +29,6 @@ namespace City_Drifter.iOS
 
             return base.FinishedLaunching(app, options);
         }
+
     }
 }

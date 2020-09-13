@@ -15,7 +15,7 @@
                 HorizontalOptions="Start"  VerticalOptions="CenterAndExpand"
                 Text="|||" Clicked="ShowOptionsTab">
             </Button>
-              <Label x:Name="isWalking"
+            <Label x:Name="isWalking"
                HorizontalOptions="End"
                VerticalOptions="CenterAndExpand"
                Text="Walking">
@@ -29,17 +29,22 @@
                Text="Driving">
             </Label>
         </StackLayout>
-        <Grid Margin="10,10,10,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding ColWidth}"/>
-                <ColumnDefinition Width="300" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="400"/>
-            </Grid.RowDefinitions>
-            <StackLayout Grid.Column="0" Orientation="Vertical" BackgroundColor="AntiqueWhite">
+        <AbsoluteLayout>
+            <StackLayout Margin="20"
+                     AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All">
+                <local:CustomMap x:Name="customMap" IsShowingUser="False" />                
+            </StackLayout>
+
+            <!-- Overlay -->
+            <StackLayout x:Name="overlay"
+                     AbsoluteLayout.LayoutBounds="{Binding rect}"
+                     AbsoluteLayout.LayoutFlags="All"
+                     BackgroundColor="#E5F6FA"
+                     IsVisible="True"
+                     HorizontalOptions="StartAndExpand">
                 <Label Text="Locations:" FontSize="20" FontAttributes="Bold">
-                </Label>
+                    </Label>
                 <ListView x:Name="LocationView"
             ItemsSource="{Binding Locations}" HasUnevenRows="True"
               SeparatorVisibility="None">
@@ -50,9 +55,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                <maps:Map x:Name="map" HeightRequest="400" WidthRequest="300"/>
-            </StackLayout>
-        </Grid>
+        </AbsoluteLayout>
     </StackLayout>
 </ContentPage>

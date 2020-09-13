@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "1TerUEpvW463UQaiw8AK/t/RgZRndpUTV4dA8sop2T6GMKKqEKNc8RRKaDtO859b5f9lv2LxenbH69K+daZqOQ==",
+  "dgSpecHash": "6pk6oaAgjuIWgSEcs9B3i59ZgD9Wf1aNKBlNCZ4x6Vb55pvclEH4SwtDx+bp2wGilOFF/YCf/8xJAi7Z4K4rMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Keith Harryman\\source\\repos\\City Drifter\\City Drifter\\City Drifter\\City Drifter.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\Keith Harryman\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\Keith Harryman\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Keith Harryman\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\Keith Harryman\\.nuget\\packages\\xam.plugin.geolocator\\4.5.0.6\\xam.plugin.geolocator.4.5.0.6.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
     "C:\\Users\\Keith Harryman\\.nuget\\packages\\xamarin.forms\\4.8.0.1269\\xamarin.forms.4.8.0.1269.nupkg.sha512",
     "C:\\Users\\Keith Harryman\\.nuget\\packages\\xamarin.forms.inputkit\\3.3.1\\xamarin.forms.inputkit.3.3.1.nupkg.sha512",

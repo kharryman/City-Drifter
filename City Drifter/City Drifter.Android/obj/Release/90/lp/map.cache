@@ -46,3 +46,6 @@ Xamarin.GooglePlayServices.Base
 Xamarin.GooglePlayServices.Basement
 Xamarin.GooglePlayServices.Maps
 Xamarin.GooglePlayServices.Tasks
+Plugin.CurrentActivity
+Plugin.Geolocator
+Plugin.Permissions
