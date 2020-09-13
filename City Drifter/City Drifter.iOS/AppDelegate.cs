@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CoreGraphics;
-using Foundation;
-using MapKit;
+﻿using Foundation;
 using UIKit;
+using Google.Maps;
 
 namespace City_Drifter.iOS
 {
@@ -12,6 +8,8 @@ namespace City_Drifter.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
+
+
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
         //
@@ -21,13 +19,16 @@ namespace City_Drifter.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
-        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        const string MapsApiKey = "AIzaSyAJD3Q-qqMw4G8Izz_DepnOx9uG3LcnK-8";
+
+        public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             global::Xamarin.Forms.Forms.Init();
-            global::Xamarin.FormsMaps.Init();
+            Xamarin.FormsGoogleMaps.Init(MapsApiKey);
             LoadApplication(new App());
-
-            return base.FinishedLaunching(app, options);
+            // Override point for customization after application launch.  
+            // If not required for your application you can safely delete this method  
+            return base.FinishedLaunching(application, launchOptions);
         }
 
     }

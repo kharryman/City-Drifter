@@ -2,10 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"             
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:City_Drifter"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              Title="City Drifter"
              x:Class="City_Drifter.MainPage">
     <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand"
@@ -33,7 +32,7 @@
             <StackLayout Margin="20"
                      AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All">
-                <local:CustomMap x:Name="customMap" IsShowingUser="False" />                
+                <maps:Map x:Name="map" VerticalOptions="FillAndExpand" />
             </StackLayout>
 
             <!-- Overlay -->

@@ -51,9 +51,10 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\zh-HK\Xamarin.Forms.Platform.iOS.resources.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\zh-Hans\Xamarin.Forms.Platform.iOS.resources.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\zh-Hant\Xamarin.Forms.Platform.iOS.resources.dll
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\Xamarin.Forms.GoogleMaps.dll
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\Xamarin.Forms.GoogleMaps.iOS.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\Plugin.InputKit.dll
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\Xamarin.Forms.Maps.dll
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\Xamarin.Forms.Maps.iOS.dll
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\Google.Maps.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\City Drifter.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\Xamarin.Forms.Platform.iOS.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\City Drifter.pdb
@@ -78,7 +79,53 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\Icon20.png.ResolveUTIs.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\coremlc\_PartialAppManifest.items
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\coremlc\_BundleResourceWithLogicalName.items
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\Info.plist
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCacheStorage.momd\VersionInfo.plist
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\Info.plist
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\ar.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\ca.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\cs.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\da.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\de.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\el.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\en.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\en_AU.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\en_GB.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\en_IN.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\es.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\es_419.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\es_MX.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\fi.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\fr.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\fr_CA.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\he.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\hi.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\hr.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\hu.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\id.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\it.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\ja.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\ko.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\lt.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\lv.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\ms.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\nb.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\nl.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\pl.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\pt.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\pt_BR.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\pt_PT.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\ro.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\ru.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\sk.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\sv.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\th.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\tr.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\uk.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\vi.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\zh_CN.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\zh_HK.lproj\GMSCore.strings
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\optimized\GoogleMaps.bundle\GMSCoreResources.bundle\zh_TW.lproj\GMSCore.strings
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\City Drifter.iOS.csprojAssemblyReference.cache
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\City Drifter.iOS.csproj.CoreCompileInputs.cache
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\XamlC.stamp
@@ -103,9 +150,10 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Xamarin.Forms.Xaml.dll.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Xamarin.Forms.Xaml.pdb.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Xamarin.Forms.Platform.iOS.resources.dll.ReferenceCopyLocalPaths.stamp
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Xamarin.Forms.GoogleMaps.dll.ReferenceCopyLocalPaths.stamp
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Xamarin.Forms.GoogleMaps.iOS.dll.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Plugin.InputKit.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Xamarin.Forms.Maps.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Xamarin.Forms.Maps.iOS.dll.ReferenceCopyLocalPaths.stamp
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Google.Maps.dll.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\City Drifter.dll.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Xamarin.Forms.Platform.iOS.dll.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\City Drifter.pdb.ReferenceCopyLocalPaths.stamp

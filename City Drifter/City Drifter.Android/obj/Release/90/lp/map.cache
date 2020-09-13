@@ -49,3 +49,4 @@ Xamarin.GooglePlayServices.Tasks
 Plugin.CurrentActivity
 Plugin.Geolocator
 Plugin.Permissions
+Xamarin.Forms.GoogleMaps.Android

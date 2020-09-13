@@ -52,8 +52,6 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\zh-Hans\Xamarin.Forms.Platform.iOS.resources.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\zh-Hant\Xamarin.Forms.Platform.iOS.resources.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\Plugin.InputKit.dll
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Maps.dll
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Maps.iOS.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\City Drifter.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Platform.iOS.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\City Drifter.pdb
@@ -61,20 +59,6 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\actool\_PartialAppManifest.items
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\actool\_BundleResourceWithLogicalName.items
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Contents.json.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon1024.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon180.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon167.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon152.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon120.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon87.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon80.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon76.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon60.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon58.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon40.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon29.png.ResolveUTIs.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\Icon20.png.ResolveUTIs.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\coremlc\_PartialAppManifest.items
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\coremlc\_BundleResourceWithLogicalName.items
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\optimized\
@@ -84,33 +68,6 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\City Drifter.iOS.csproj.CopyComplete
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\City Drifter.iOS.exe
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\City Drifter.iOS.pdb
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Plugin.Permissions.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\SQLite-net.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\SQLitePCLRaw.batteries_v2.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\SQLitePCLRaw.nativelibrary.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\SQLitePCLRaw.core.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\SQLitePCLRaw.provider.dynamic_cdecl.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\System.Buffers.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\System.Memory.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\System.Runtime.CompilerServices.Unsafe.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Plugin.Geolocator.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Essentials.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Essentials.pdb.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Forms.Core.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Forms.Core.pdb.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Forms.Platform.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Forms.Xaml.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Forms.Xaml.pdb.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Forms.Platform.iOS.resources.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Plugin.InputKit.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Forms.Maps.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Forms.Maps.iOS.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\City Drifter.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Forms.Platform.iOS.dll.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\City Drifter.pdb.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Xamarin.Forms.Platform.iOS.pdb.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\City Drifter.iOS.exe.mdb.ReferenceCopyLocalPaths.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\City Drifter.iOS.pdb.DebugSymbolsProjectOutputGroupOutput.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Entitlements.plist.NoneOutput.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\CopyFilesToMac\Info.plist.NoneOutput.stamp
-C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhoneSimulator\Debug\pointer.png.ResolveUTIs.stamp
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.GoogleMaps.dll
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.GoogleMaps.iOS.dll
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhoneSimulator\Debug\Google.Maps.dll

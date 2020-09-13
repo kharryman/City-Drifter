@@ -30,7 +30,6 @@ namespace City_Drifter.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            global::Xamarin.FormsMaps.Init(this, savedInstanceState);
             App.DisplayScreenWidth = (double)Resources.DisplayMetrics.WidthPixels / (double)Resources.DisplayMetrics.Density;
             App.DisplayScreenHeight = (double)Resources.DisplayMetrics.HeightPixels / (double)Resources.DisplayMetrics.Density;
             App.DisplayScaleFactor = (double)Resources.DisplayMetrics.Density;

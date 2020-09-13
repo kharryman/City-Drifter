@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Threading;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Internals;
 using Xamarin.Essentials;
 using Plugin.Geolocator;
@@ -13,8 +12,9 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms.Markup;
-using Position = Xamarin.Forms.Maps.Position;
 using System.Collections.Generic;
+using Xamarin.Forms.GoogleMaps;
+using Position = Xamarin.Forms.GoogleMaps.Position;
 
 namespace City_Drifter
 {
@@ -28,6 +28,8 @@ namespace City_Drifter
         public string DisplayName { get; set; }
     }
 
+
+
     public partial class MainPage : ContentPage
     {
         public string tag = "MainPage";
@@ -39,6 +41,8 @@ namespace City_Drifter
 
         private double overlayWidth = 0.0;
         private double overlayHeight= 0.0;
+        Pin mySelf;
+
         //public CustomMap customMap;
         public static LocationDatabase Database
         {
@@ -51,6 +55,8 @@ namespace City_Drifter
                 return database;
             }
         }
+
+        public double Heading { get; set; }
 
         private bool isTabVisible = false;
         private bool isLocationTab = false;
@@ -76,7 +82,6 @@ namespace City_Drifter
             }
         }
 
-        CustomPin customPin;
 
 
         public MainPage()
@@ -113,20 +118,14 @@ namespace City_Drifter
             locations.Add(new Location { DisplayName = "Kingsburg" });
             locations.Add(new Location { DisplayName = "Hanford" });
 
-            customPin = new CustomPin
-            {
-                Type = PinType.Place,
-                Position = new Position(37.79752, -122.40183),
-                Label = "Xamarin San Francisco Office",
-                Address = "394 Pacific Ave, San Francisco CA",
-                Name = "Xamarin",
-                Url = "http://xamarin.com/about/"
-            };
-            customMap = new CustomMap();
-            customMap.CustomPins = new List<CustomPin> { customPin };
 
             if (IsLocationAvailable())
             {
+                mySelf = new Pin()
+                {
+                    Label = "ME!"
+                };
+                map.Pins.Add(mySelf);
                 _ = StartListening();
             }
         }
@@ -148,7 +147,6 @@ namespace City_Drifter
                     var zoomLevel = 9; // between 1 and 18
                     var latlongdegrees = 360 / (Math.Pow(2, zoomLevel));
 
-                    customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Xamarin.Forms.Maps.Position(location.Latitude, location.Longitude), Distance.FromMiles(1)));
                     //map.MoveToRegion(new MapSpan(map.VisibleRegion.Center, latlongdegrees, latlongdegrees));
                     
                     var timeoutTask = Task.Delay(3);
@@ -218,10 +216,11 @@ namespace City_Drifter
             output += "\n" + $"Accuracy: {position.Accuracy}";
             output += "\n" + $"Altitude: {position.Altitude}";
             output += "\n" + $"Altitude Accuracy: {position.AltitudeAccuracy}";
-            var newPosition = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude);
-            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(newPosition, Distance.FromMiles(1)));
-            customPin.Position = newPosition;
             //map.RotateTo(position.Heading);
+            mySelf.Position = new Position(position.Latitude, position.Longitude);
+            mySelf.Icon = BitmapDescriptorFactory.FromView(new BindingPinView("Hello!"));
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(mySelf.Position, Distance.FromMiles(1)));
+            Heading = position.Heading;
             Debug.WriteLine(output);
         }
 
