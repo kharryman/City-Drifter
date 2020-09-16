@@ -10,8 +10,7 @@
 
         <Image Source="pointer" 
             AbsoluteLayout.LayoutBounds="0, 0, 37, 48"
-            AbsoluteLayout.LayoutFlags="None"
-            Rotation="{Binding Heading}"/>
+            AbsoluteLayout.LayoutFlags="None"/>
 
         <Label Text="{Binding Display}" TextColor="Black" FontSize="8" HorizontalTextAlignment="Center" 
                 BackgroundColor="Transparent" WidthRequest="100" HeightRequest="40"

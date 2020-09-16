@@ -11,10 +11,11 @@ namespace City_Drifter
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string Country { get; set; }
+        public string Travel_Mode { get; set; }
         public string State { get; set; }        
         public string City { get; set; }
-        public string Road { get; set; }
-        public bool Done { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 
 }

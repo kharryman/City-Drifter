@@ -25,11 +25,17 @@ namespace City_Drifter.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             Xamarin.FormsGoogleMaps.Init(MapsApiKey);
+
+
+
             LoadApplication(new App());
             // Override point for customization after application launch.  
             // If not required for your application you can safely delete this method  
             return base.FinishedLaunching(application, launchOptions);
         }
+
+
+
 
     }
 }

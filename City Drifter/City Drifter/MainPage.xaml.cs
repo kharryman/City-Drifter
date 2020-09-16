@@ -15,6 +15,8 @@ using Xamarin.Forms.Markup;
 using System.Collections.Generic;
 using Xamarin.Forms.GoogleMaps;
 using Position = Xamarin.Forms.GoogleMaps.Position;
+using System.Linq;
+using TouchTracking;
 
 namespace City_Drifter
 {
@@ -23,7 +25,7 @@ namespace City_Drifter
     [DesignTimeVisible(false)]
 
 
-    public class Location
+    public class MyLocation
     {
         public string DisplayName { get; set; }
     }
@@ -34,13 +36,13 @@ namespace City_Drifter
     {
         public string tag = "MainPage";
         public Boolean isTab = false;
-        ObservableCollection<Location> locations = new ObservableCollection<Location>();
-        public ObservableCollection<Location> Locations{ get { return locations; } }
+        ObservableCollection<MyLocation> locations = new ObservableCollection<MyLocation>();
+        public ObservableCollection<MyLocation> Locations { get { return locations; } }
 
         static LocationDatabase database;
 
         private double overlayWidth = 0.0;
-        private double overlayHeight= 0.0;
+        private double overlayHeight = 0.0;
         Pin mySelf;
 
         //public CustomMap customMap;
@@ -56,7 +58,13 @@ namespace City_Drifter
             }
         }
 
-        public double Heading { get; set; }
+        public bool isSetIcon { get; set; }
+        public bool isGettingAddress { get; set; }
+
+        public string currentCountry{ get; set; }
+        public string currentState { get; set; }
+        public string currentCity{ get; set; }
+        public Plugin.Geolocator.Abstractions.Position oldPosition {get; set;}
 
         private bool isTabVisible = false;
         private bool isLocationTab = false;
@@ -82,6 +90,10 @@ namespace City_Drifter
             }
         }
 
+        bool isBeingDragged;
+        long touchId;
+        Point pressPoint;
+
 
 
         public MainPage()
@@ -90,7 +102,10 @@ namespace City_Drifter
             //Compass.ReadingChanged += (s, e) => PointerImage.RotateTo(e.Reading.HeadingMagneticNorth, 200);
             //Compass.Start(SensorSpeed.UI, applyLowPassFilter: true);
             //LoadApplication(new screensize.App());
+            isSetIcon = false;
+            isGettingAddress = false;
             overlay.IsVisible = false;
+            oldPosition = null;
             rect = new Xamarin.Forms.Rectangle(0, 0, 0.0, 0.0);
 
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
@@ -111,12 +126,12 @@ namespace City_Drifter
 
             // ObservableCollection allows items to be added after ItemsSource
             // is set and the UI will react to changes
-            locations.Add(new Location{ DisplayName = "Madera" });
-            locations.Add(new Location { DisplayName = "Sanger" });
-            locations.Add(new Location { DisplayName = "Reedley" });
-            locations.Add(new Location { DisplayName = "Merced" });
-            locations.Add(new Location { DisplayName = "Kingsburg" });
-            locations.Add(new Location { DisplayName = "Hanford" });
+            locations.Add(new MyLocation { DisplayName = "Madera" });
+            locations.Add(new MyLocation { DisplayName = "Sanger" });
+            locations.Add(new MyLocation { DisplayName = "Reedley" });
+            locations.Add(new MyLocation { DisplayName = "Merced" });
+            locations.Add(new MyLocation { DisplayName = "Kingsburg" });
+            locations.Add(new MyLocation { DisplayName = "Hanford" });
 
 
             if (IsLocationAvailable())
@@ -218,10 +233,108 @@ namespace City_Drifter
             output += "\n" + $"Altitude Accuracy: {position.AltitudeAccuracy}";
             //map.RotateTo(position.Heading);
             mySelf.Position = new Position(position.Latitude, position.Longitude);
-            mySelf.Icon = BitmapDescriptorFactory.FromView(new BindingPinView("Hello!"));
+            mySelf.Rotation = (float)position.Heading;
+            if (!isSetIcon)
+            {
+                mySelf.Icon = BitmapDescriptorFactory.FromView(new BindingPinView("Hello!"));
+                isSetIcon = true;
+            }
             map.MoveToRegion(MapSpan.FromCenterAndRadius(mySelf.Position, Distance.FromMiles(1)));
-            Heading = position.Heading;
+
+
+            if (!isGettingAddress)
+            {
+                isGettingAddress = true;
+                getAddress(position);                
+            }
+            
             Debug.WriteLine(output);
+        }
+
+        async private void getAddress(Plugin.Geolocator.Abstractions.Position position)
+        {
+            try
+            {
+                var lat = position.Latitude;
+                var lon = position.Longitude;
+
+                var placemarks = await Geocoding.GetPlacemarksAsync(lat, lon);
+
+                var placemark = placemarks?.FirstOrDefault();
+                if (placemark != null)
+                {
+                    var geocodeAddress =
+                        $"AdminArea:       {placemark.AdminArea}\n" +
+                        $"CountryCode:     {placemark.CountryCode}\n" +
+                        $"CountryName:     {placemark.CountryName}\n" +
+                        $"FeatureName:     {placemark.FeatureName}\n" +
+                        $"Locality:        {placemark.Locality}\n" +
+                        $"PostalCode:      {placemark.PostalCode}\n" +
+                        $"SubAdminArea:    {placemark.SubAdminArea}\n" +
+                        $"SubLocality:     {placemark.SubLocality}\n" +
+                        $"SubThoroughfare: {placemark.SubThoroughfare}\n" +
+                        $"Thoroughfare:    {placemark.Thoroughfare}\n";
+
+                    Console.WriteLine(geocodeAddress);
+                }
+
+                //GET AND PLOT POINTS IF COUNTRY, STATE, AND CITY CHANGE:
+                if (currentCountry!= placemark.CountryName && currentState != placemark.AdminArea && currentCity != placemark.Locality)
+                {
+                    var travelMode = walkingSwitch.IsToggled == false ? "WALKING" : "DRIVING";
+                    var travelledLocations = Database.GetRoadsDone(placemark.CountryName, placemark.AdminArea, placemark.Locality, travelMode);
+                    Console.WriteLine("FOUND " + travelledLocations.Result.Count + " LINES MOVED.");
+                    var polygon = new Polygon()
+                    {
+                        FillColor = Color.Transparent,
+                        StrokeColor = Color.Blue,
+                        StrokeWidth = 2f
+                    };
+                    for (var i = 0; i < travelledLocations.Result.Count; i++)
+                    {
+                        polygon.Positions.Add(new Position(travelledLocations.Result[i].Latitude, travelledLocations.Result[i].Longitude));
+                    }
+                    map.Polygons.Add(polygon);
+                    oldPosition = position;
+                }
+    
+                if (oldPosition != null)
+                {
+                    Location sourceCoordinates = new Location(oldPosition.Latitude, oldPosition.Longitude);
+                    Location destinationCoordinates = new Location(position.Latitude, position.Longitude);                    
+                    double distance = Location.CalculateDistance(sourceCoordinates, destinationCoordinates, DistanceUnits.Kilometers);
+                    var distanceThreshold = walkingSwitch.IsToggled == false ? 0.025 : 0.100;
+                    Console.WriteLine("Distance = " + distance);
+                    if (distance > distanceThreshold)//IF MORE THAN 250 METERS: SAVE TO DATABASE:
+                    {
+                        Console.WriteLine("Saving LocationItem into database");
+                        var travelMode = walkingSwitch.IsToggled == false ? "WALKING" : "DRIVING";
+                        var myDatabaseLocation = new LocationItem { Travel_Mode = travelMode, Country = placemark.CountryName, State = placemark.AdminArea, City = placemark.Locality, Latitude = position.Latitude , Longitude = position.Longitude };
+                        Database.UpdateItemAsync(myDatabaseLocation);
+                        var polygon = new Polygon()
+                        {
+                            FillColor = Color.Transparent,
+                            StrokeColor = Color.Blue,
+                            StrokeWidth = 2f
+                        };
+                        polygon.Positions.Add(new Position(oldPosition.Latitude, oldPosition.Longitude));
+                        polygon.Positions.Add(new Position(position.Latitude, position.Longitude));
+                        map.Polygons.Add(polygon);
+                        oldPosition = position;
+                    }
+                }
+                isGettingAddress = false;
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+                isGettingAddress = false;
+            }
+            catch (Exception ex)
+            {
+                // Handle exception that may have occurred in geocoding
+                isGettingAddress = false;
+            }
         }
 
         private void PositionError(object sender, PositionErrorEventArgs e)
@@ -261,7 +374,15 @@ namespace City_Drifter
                 //rect = new Xamarin.Forms.Rectangle(0, 0, 0.5, 1.0);
                 await overlay.LayoutTo(new Rectangle(0, 0, overlayWidth, overlayHeight), 250, Easing.Linear);
                 //await overlay.LayoutTo(new Rectangle(0, 0, 0.5, 1.0), 1000, Easing.Linear);
-                Log.Warning(tag, "Setiting rect to half width");                
+                Log.Warning(tag, "Setiting rect to half width");
+                //TODO: GET LOCATIONS(COUNTRY, STATE, CITY)
+                var locationsVistited = Database.GetLocationsVisited();
+                locations.Clear();
+                Console.WriteLine("locationsVisited LENGTH = " + locationsVistited.Result.Count);
+                for (var i=0;i< locationsVistited.Result.Count; i++)
+                {
+                    locations.Add(new MyLocation { DisplayName = "Country: " + locationsVistited.Result[i].Country + ", Stagte: " + locationsVistited.Result[i].State + ", City: " + locationsVistited.Result[i].City });
+                }
             }
             else
             {
@@ -275,5 +396,39 @@ namespace City_Drifter
                 Log.Warning(tag, "Setiting rect to 0 width");
             }
         }
+
+        void OnTouchEffectAction(object sender, TouchActionEventArgs args)
+        {
+            switch (args.Type)
+            {
+                case TouchActionType.Pressed:
+                    //if (!isBeingDragged)
+                    //{
+                    //    isBeingDragged = true;
+                    //    touchId = args.Id;
+                        //pressPoint = args.Location;                        
+                    //}
+                    Console.WriteLine("Pressed ACTION");
+                    break;
+
+                case TouchActionType.Moved:
+                    //if (isBeingDragged && touchId == args.Id)
+                    //{
+                    //    TranslationX += args.Location.X - pressPoint.X;
+                    //    TranslationY += args.Location.Y - pressPoint.Y;
+                    //}
+                    Console.WriteLine("Moved ACTION");
+                    break;
+
+                case TouchActionType.Released:
+                    //if (isBeingDragged && touchId == args.Id)
+                    //{
+                    //    isBeingDragged = false;
+                   // }
+                    Console.WriteLine("Released ACTION");
+                    break;
+            }
+        }
     }
+
 }

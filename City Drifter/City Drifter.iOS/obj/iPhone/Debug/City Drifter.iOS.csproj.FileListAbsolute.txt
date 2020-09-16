@@ -9,6 +9,8 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\System.Buffers.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\System.Memory.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\TouchTracking.dll
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\TouchTracking.iOS.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\Plugin.Geolocator.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\Xamarin.Essentials.dll
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\bin\iPhone\Debug\Xamarin.Essentials.pdb
@@ -141,6 +143,8 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\System.Buffers.dll.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\System.Memory.dll.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\System.Runtime.CompilerServices.Unsafe.dll.ReferenceCopyLocalPaths.stamp
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\TouchTracking.dll.ReferenceCopyLocalPaths.stamp
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\TouchTracking.iOS.dll.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Plugin.Geolocator.dll.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Xamarin.Essentials.dll.ReferenceCopyLocalPaths.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CopyFilesToMac\Xamarin.Essentials.pdb.ReferenceCopyLocalPaths.stamp

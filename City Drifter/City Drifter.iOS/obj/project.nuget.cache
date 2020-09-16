@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ebe4qDlZYL0ZYUc7IkvAHP3sG84cjtWYCjHlvQd1qpvkynvmSdAhUfjAE4jpHmqs13MWG5bUgMp+t7KVSO9F2w==",
+  "dgSpecHash": "zq2Exe8r5e9+CsDFu4xeSlvSiXW5uNqXXd3hXE4WWtxJPbe7dsf+OM3mC3UsFn6iO0YFE1GVolr6C8IDmb3uSw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Keith Harryman\\source\\repos\\City Drifter\\City Drifter\\City Drifter.iOS\\City Drifter.iOS.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\Keith Harryman\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\Keith Harryman\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\Keith Harryman\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\Keith Harryman\\.nuget\\packages\\touchtracking\\1.1.0\\touchtracking.1.1.0.nupkg.sha512",
     "C:\\Users\\Keith Harryman\\.nuget\\packages\\xam.plugin.geolocator\\4.5.0.6\\xam.plugin.geolocator.4.5.0.6.nupkg.sha512",
     "C:\\Users\\Keith Harryman\\.nuget\\packages\\xamarin.build.download\\0.10.0\\xamarin.build.download.0.10.0.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",

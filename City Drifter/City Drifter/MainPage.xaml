@@ -19,7 +19,7 @@
                VerticalOptions="CenterAndExpand"
                Text="Walking">
             </Label>
-            <Switch IsToggled="true"
+            <Switch x:Name="walkingSwitch" IsToggled="true"
                HorizontalOptions="End"
                VerticalOptions="CenterAndExpand"/>
             <Label x:Name="isDriving"
