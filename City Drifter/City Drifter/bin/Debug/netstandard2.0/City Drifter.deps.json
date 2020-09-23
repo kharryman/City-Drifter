@@ -17,7 +17,8 @@
           "Xamarin.Forms": "4.8.0.1269",
           "Xamarin.Forms.GoogleMaps": "3.3.0",
           "Xamarin.Forms.InputKit": "3.3.1",
-          "sqlite-net-pcl": "1.7.335"
+          "sqlite-net-pcl": "1.7.335",
+          "Mono.Android": "0.0.0.0"
         },
         "runtime": {
           "City Drifter.dll": {}
@@ -175,6 +176,14 @@
             "fileVersion": "3.3.1.0"
           }
         }
+      },
+      "Mono.Android/0.0.0.0": {
+        "runtime": {
+          "Mono.Android.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
       }
     }
   },
@@ -309,6 +318,11 @@
       "sha512": "sha512-kImnhvy5mTl5svTdXxOX2E/7utECIwPgimfvwrHqYrdtqcOqlfsDOIzFNYNU18+NojELPHrL23U6UofXBa8MCQ==",
       "path": "xamarin.forms.inputkit/3.3.1",
       "hashPath": "xamarin.forms.inputkit.3.3.1.nupkg.sha512"
+    },
+    "Mono.Android/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

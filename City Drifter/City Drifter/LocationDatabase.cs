@@ -46,7 +46,9 @@ namespace City_Drifter
 
         public Task<List<LocationItem>> GetRoadsDone(String country, String state, String city, String travelMode)
         {
-            return Database.QueryAsync<LocationItem>("SELECT * FROM [LocationItem] WHERE [Country] = '" + country + "' AND [State] = '" + state + "' AND [City] = '" + city + "' AND [Travel_Mode] = '" + travelMode + "'");
+            String query = "SELECT* FROM[LocationItem] WHERE[Country] = '" + country + "' AND[State] = '" + state + "' AND[City] = '" + city + "' AND[Travel_Mode] = '" + travelMode + "'";
+            Console.WriteLine($"GetRoadsDone called. QUERY = {query}");
+            return Database.QueryAsync<LocationItem>(query);
         }
 
         public Task<LocationItem> GetItemAsync(int id)
@@ -55,10 +57,11 @@ namespace City_Drifter
         }
 
         public void UpdateItemAsync(LocationItem item)
-        {
-            Console.WriteLine("LocationDatabase UpdateItemAsync called."); ;
-            var updateLocation = Database.QueryAsync<LocationItem>("SELECT * FROM [LocationItem] WHERE Country] = '" + item.Country + "' AND [State] = '" + item.State + "' AND [City] = '" + item.City + "'");
-            Console.WriteLine("LocationDatabase UpdateItemAsync updateLocation.Result.Count = " + updateLocation.Result.Count); ;
+        {            
+            String query = "SELECT * FROM [LocationItem] WHERE [Country] = '" + item.Country + "' AND [State] = '" + item.State + "' AND [City] = '" + item.City + "'";
+            Console.WriteLine($"LocationDatabase UpdateItemAsync called. query = " + query); ;
+            var updateLocation = Database.QueryAsync<LocationItem>(query);
+            Console.WriteLine($"LocationDatabase UpdateItemAsync updateLocation.Result.Count = " + updateLocation.Result.Count); ;
             if (updateLocation.Result.Count == 0)
             {
                 Console.WriteLine("LocationDatabase UpdateItemAsync INSERTED INTO DATABASE !!!"); ;
@@ -68,7 +71,8 @@ namespace City_Drifter
 
         public Task<int> SaveItemAsync(LocationItem item)
         {
-            if (item.ID != 0)
+            Console.WriteLine($"SaveItemAsync called. item = {item.Travel_Mode}, {item.Latitude}, {item.Longitude}");
+            if (item.ID!=null && item.ID != 0)
             {
                 return Database.UpdateAsync(item);
             }

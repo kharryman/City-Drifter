@@ -50,3 +50,4 @@ Plugin.CurrentActivity
 Plugin.Geolocator
 Plugin.Permissions
 Xamarin.Forms.GoogleMaps.Android
+TouchTracking.Droid

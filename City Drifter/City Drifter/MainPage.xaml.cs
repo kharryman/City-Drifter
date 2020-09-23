@@ -95,7 +95,6 @@ namespace City_Drifter
         Point pressPoint;
 
 
-
         public MainPage()
         {
             InitializeComponent();
@@ -142,6 +141,9 @@ namespace City_Drifter
                 };
                 map.Pins.Add(mySelf);
                 _ = StartListening();
+                TouchEffect touchEffect = new TouchEffect();
+                touchEffect.TouchAction += OnTouchEffectAction;
+                map.Effects.Add(touchEffect);
             }
         }
 
@@ -210,7 +212,7 @@ namespace City_Drifter
                 return;
 
 
-            await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(5), 10, true);
+            await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(10), 10, true);
 
             CrossGeolocator.Current.PositionChanged += PositionChanged;
             CrossGeolocator.Current.PositionError += PositionError;
@@ -231,24 +233,62 @@ namespace City_Drifter
             output += "\n" + $"Accuracy: {position.Accuracy}";
             output += "\n" + $"Altitude: {position.Altitude}";
             output += "\n" + $"Altitude Accuracy: {position.AltitudeAccuracy}";
-            //map.RotateTo(position.Heading);
+            //Debug.WriteLine(output);
             mySelf.Position = new Position(position.Latitude, position.Longitude);
             mySelf.Rotation = (float)position.Heading;
             if (!isSetIcon)
             {
-                mySelf.Icon = BitmapDescriptorFactory.FromView(new BindingPinView("Hello!"));
+                mySelf.Icon = BitmapDescriptorFactory.FromView(new BindingPinView(""));
                 isSetIcon = true;
             }
             map.MoveToRegion(MapSpan.FromCenterAndRadius(mySelf.Position, Distance.FromMiles(1)));
-
-
-            if (!isGettingAddress)
+            if (oldPosition == null)
             {
-                isGettingAddress = true;
-                getAddress(position);                
+                oldPosition = position;
             }
+            else
+            {
+                if (position != null)
+                {
+                    Console.WriteLine($"CHECKING DISTANCE !!!");
+                    Location sourceCoordinates = new Location(oldPosition.Latitude, oldPosition.Longitude);
+                    Location destinationCoordinates = new Location(position.Latitude, position.Longitude);
+                    double distance = Location.CalculateDistance(sourceCoordinates, destinationCoordinates, DistanceUnits.Kilometers);
+                    double distanceThreshold = walkingSwitch.IsToggled == false ? 0.005 : 0.100;
+                    Console.WriteLine($"Distance = " + distance);
+                    Random rg = new Random();
+                    int myR = rg.Next(0, 10);
+                    if (distance >= distanceThreshold || myR > 7)//IF MORE THAN 250 METERS: SAVE TO DATABASE:
+                    {
+                        Console.WriteLine($"ADDING POLYLINE !!!");
+                        var polyline = new Xamarin.Forms.GoogleMaps.Polyline();
+                        polyline.StrokeColor = Color.Blue;
+                        polyline.StrokeWidth = 2f;
+                        // APP_DEBUG X : 
+                        var myRLat = .005 + ((rg.Next(-5, 5)) * 0.01);
+                        var myRLng = .005 + ((rg.Next(-5, 5)) * 0.01);
+                        position.Latitude += myRLat;
+                        position.Longitude += myRLng;
+                        // 
+                        polyline.Positions.Add(new Position(oldPosition.Latitude , oldPosition.Longitude));
+                        polyline.Positions.Add(new Position(position.Latitude, position.Longitude));
+                        map.Polylines.Add(polyline);
+                        Console.WriteLine($"ADDED POLYLINE !!!");
+                        oldPosition = position;
+                        if (!isGettingAddress)
+                        {
+                            isGettingAddress = true;
+                            getAddress(position);
+                        }
+                        Console.WriteLine("Saving LocationItem into database");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("oldPosition IS NULL");
+                }
+            }            
             
-            Debug.WriteLine(output);
         }
 
         async private void getAddress(Plugin.Geolocator.Abstractions.Position position)
@@ -264,66 +304,41 @@ namespace City_Drifter
                 if (placemark != null)
                 {
                     var geocodeAddress =
-                        $"AdminArea:       {placemark.AdminArea}\n" +
-                        $"CountryCode:     {placemark.CountryCode}\n" +
-                        $"CountryName:     {placemark.CountryName}\n" +
-                        $"FeatureName:     {placemark.FeatureName}\n" +
-                        $"Locality:        {placemark.Locality}\n" +
-                        $"PostalCode:      {placemark.PostalCode}\n" +
-                        $"SubAdminArea:    {placemark.SubAdminArea}\n" +
-                        $"SubLocality:     {placemark.SubLocality}\n" +
-                        $"SubThoroughfare: {placemark.SubThoroughfare}\n" +
-                        $"Thoroughfare:    {placemark.Thoroughfare}\n";
+                        $"FeatureName:     {placemark.FeatureName}, " +
+                        $"Locality:        {placemark.Locality}, " +
+                        $"AdminArea:       {placemark.AdminArea}, " +
+                        $"CountryName:     {placemark.CountryName}.";
+                    //$"CountryCode:     {placemark.CountryCode}\n" +                        
+
+
+                    //$"PostalCode:      {placemark.PostalCode}\n" +
+                    //$"SubAdminArea:    {placemark.SubAdminArea}\n" +
+                    //$"SubLocality:     {placemark.SubLocality}\n" +
+                    //$"SubThoroughfare: {placemark.SubThoroughfare}\n" +
+                    //$"Thoroughfare:    {placemark.Thoroughfare}\n";
 
                     Console.WriteLine(geocodeAddress);
-                }
+                    String travelMode = walkingSwitch.IsToggled == false ? "WALKING" : "DRIVING";
+                    Console.WriteLine($"travelMode = " + travelMode);
 
-                //GET AND PLOT POINTS IF COUNTRY, STATE, AND CITY CHANGE:
-                if (currentCountry!= placemark.CountryName && currentState != placemark.AdminArea && currentCity != placemark.Locality)
-                {
-                    var travelMode = walkingSwitch.IsToggled == false ? "WALKING" : "DRIVING";
-                    var travelledLocations = Database.GetRoadsDone(placemark.CountryName, placemark.AdminArea, placemark.Locality, travelMode);
-                    Console.WriteLine("FOUND " + travelledLocations.Result.Count + " LINES MOVED.");
-                    var polygon = new Polygon()
+                    //GET AND PLOT POINTS IF COUNTRY, STATE, AND CITY CHANGE:
+                    if (position != null && currentCountry != placemark.CountryName && currentState != placemark.AdminArea && currentCity != placemark.Locality)
                     {
-                        FillColor = Color.Transparent,
-                        StrokeColor = Color.Blue,
-                        StrokeWidth = 2f
-                    };
-                    for (var i = 0; i < travelledLocations.Result.Count; i++)
-                    {
-                        polygon.Positions.Add(new Position(travelledLocations.Result[i].Latitude, travelledLocations.Result[i].Longitude));
-                    }
-                    map.Polygons.Add(polygon);
-                    oldPosition = position;
-                }
-    
-                if (oldPosition != null)
-                {
-                    Location sourceCoordinates = new Location(oldPosition.Latitude, oldPosition.Longitude);
-                    Location destinationCoordinates = new Location(position.Latitude, position.Longitude);                    
-                    double distance = Location.CalculateDistance(sourceCoordinates, destinationCoordinates, DistanceUnits.Kilometers);
-                    var distanceThreshold = walkingSwitch.IsToggled == false ? 0.025 : 0.100;
-                    Console.WriteLine("Distance = " + distance);
-                    if (distance > distanceThreshold)//IF MORE THAN 250 METERS: SAVE TO DATABASE:
-                    {
-                        Console.WriteLine("Saving LocationItem into database");
-                        var travelMode = walkingSwitch.IsToggled == false ? "WALKING" : "DRIVING";
-                        var myDatabaseLocation = new LocationItem { Travel_Mode = travelMode, Country = placemark.CountryName, State = placemark.AdminArea, City = placemark.Locality, Latitude = position.Latitude , Longitude = position.Longitude };
-                        Database.UpdateItemAsync(myDatabaseLocation);
-                        var polygon = new Polygon()
-                        {
-                            FillColor = Color.Transparent,
-                            StrokeColor = Color.Blue,
-                            StrokeWidth = 2f
-                        };
-                        polygon.Positions.Add(new Position(oldPosition.Latitude, oldPosition.Longitude));
-                        polygon.Positions.Add(new Position(position.Latitude, position.Longitude));
-                        map.Polygons.Add(polygon);
+                        currentCountry = placemark.CountryName;
+                        currentState = placemark.AdminArea;
+                        currentCity = placemark.Locality;
                         oldPosition = position;
+                        Console.WriteLine($"SET oldPosition = " + oldPosition.Latitude + ", " + oldPosition.Longitude);
+                        addDatabasePolylines(placemark.CountryName, placemark.AdminArea, placemark.Locality, travelMode);
                     }
+                    isGettingAddress = false;
+                    var myDatabaseLocation = new LocationItem { Travel_Mode = travelMode, Country = placemark.CountryName, State = placemark.AdminArea, City = placemark.Locality, Latitude = position.Latitude, Longitude = position.Longitude };
+                    Database.SaveItemAsync(myDatabaseLocation);
+                }//PLACEMARK IS NULL!:
+                else
+                {
+                    isGettingAddress = false;
                 }
-                isGettingAddress = false;
             }
             catch (FeatureNotSupportedException fnsEx)
             {
@@ -337,6 +352,39 @@ namespace City_Drifter
             }
         }
 
+        void OnTravelModeToggled(object sender, ToggledEventArgs e)
+        {
+            String travelMode = walkingSwitch.IsToggled == false ? "WALKING" : "DRIVING";
+            Console.WriteLine($"OnTravelModeToggled travelMode = " + travelMode);
+            //GET AND PLOT POINTS IF COUNTRY, STATE, AND CITY CHANGE:
+            if (currentCountry != null && currentState != null && currentCity != null)
+            {
+                Console.WriteLine($"OnTravelModeToggled calling addDatabasePolylines !!!");
+                map.Polylines.Clear();
+                addDatabasePolylines(currentCountry, currentState, currentCity, travelMode);
+            }
+        }
+
+
+        private void addDatabasePolylines(String country, String state, String city, String travelMode)
+        {
+            var travelledLocations = Database.GetRoadsDone(country, state, city, travelMode);
+            Console.WriteLine($"addDatabasePolylines FOUND " + travelledLocations.Result.Count + " LINES MOVED.");
+            if (travelledLocations.Result.Count > 0)
+            {
+                var polyline = new Xamarin.Forms.GoogleMaps.Polyline();
+                polyline.StrokeColor = Color.Blue;
+                polyline.StrokeWidth = 2f;
+                for (var i = 0; i < travelledLocations.Result.Count; i++)
+                {
+                    Console.WriteLine($"ADDING POLYLINE LATITUDE = " + travelledLocations.Result[i].Latitude + $", LONGITUDE = " + travelledLocations.Result[i].Longitude);
+                    polyline.Positions.Add(new Position(travelledLocations.Result[i].Latitude, travelledLocations.Result[i].Longitude));
+                }
+                map.Polylines.Add(polyline);
+                Console.WriteLine($"addDatabasePolylines ADDED DATABASE POLYLINES!!!");
+            }
+        }
+
         private void PositionError(object sender, PositionErrorEventArgs e)
 
         {
@@ -344,16 +392,16 @@ namespace City_Drifter
             //Handle event here for errors
         }
 
-        //async Task StopListening()
-       // {
-       //     if (!CrossGeolocator.Current.IsListening)
-       //         return;
+       async Task StopListening()
+       {
+            if (!CrossGeolocator.Current.IsListening)
+                return;
 
-            //await CrossGeolocator.Current.StopListening();
+            await CrossGeolocator.Current.StopListeningAsync();
 
-            //CrossGeolocator.Current.PositionChanged -= PositionChanged;
-            //CrossGeolocator.Current.PositionError -= PositionError;
-        //}
+            CrossGeolocator.Current.PositionChanged -= PositionChanged;
+            CrossGeolocator.Current.PositionError -= PositionError;
+        }
 
         protected override void OnAppearing()
         {
@@ -397,8 +445,9 @@ namespace City_Drifter
             }
         }
 
-        void OnTouchEffectAction(object sender, TouchActionEventArgs args)
+        async void OnTouchEffectAction(object sender, TouchActionEventArgs args)
         {
+            Console.WriteLine("OnTouchEffectAction CALLED!!");
             switch (args.Type)
             {
                 case TouchActionType.Pressed:
@@ -409,6 +458,7 @@ namespace City_Drifter
                         //pressPoint = args.Location;                        
                     //}
                     Console.WriteLine("Pressed ACTION");
+                    //await StopListening();
                     break;
 
                 case TouchActionType.Moved:
@@ -424,8 +474,9 @@ namespace City_Drifter
                     //if (isBeingDragged && touchId == args.Id)
                     //{
                     //    isBeingDragged = false;
-                   // }
+                    // }                    
                     Console.WriteLine("Released ACTION");
+                    //await StartListening();
                     break;
             }
         }
