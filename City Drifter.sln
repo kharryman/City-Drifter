@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "City Drifter.Android", "Cit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "City Drifter.iOS", "City Drifter\City Drifter.iOS\City Drifter.iOS.csproj", "{362B4EDC-05D7-49EA-910B-27436EAFC97D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "City Drifter", "City Drifter\City Drifter\City Drifter.csproj", "{3C27CC36-B2EC-438E-BC49-4ECF295FD443}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "City Drifter", "City Drifter\City Drifter\City Drifter.csproj", "{3C27CC36-B2EC-438E-BC49-4ECF295FD443}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,7 +44,6 @@ Global
 		{362B4EDC-05D7-49EA-910B-27436EAFC97D}.Debug|iPhone.Build.0 = Debug|iPhone
 		{362B4EDC-05D7-49EA-910B-27436EAFC97D}.Debug|iPhone.Deploy.0 = Debug|iPhone
 		{362B4EDC-05D7-49EA-910B-27436EAFC97D}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{362B4EDC-05D7-49EA-910B-27436EAFC97D}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{362B4EDC-05D7-49EA-910B-27436EAFC97D}.Debug|iPhoneSimulator.Deploy.0 = Debug|iPhoneSimulator
 		{362B4EDC-05D7-49EA-910B-27436EAFC97D}.Release|Any CPU.ActiveCfg = Release|iPhone
 		{362B4EDC-05D7-49EA-910B-27436EAFC97D}.Release|Any CPU.Build.0 = Release|iPhone
@@ -62,7 +61,6 @@ Global
 		{3C27CC36-B2EC-438E-BC49-4ECF295FD443}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{3C27CC36-B2EC-438E-BC49-4ECF295FD443}.Debug|iPhone.Deploy.0 = Debug|Any CPU
 		{3C27CC36-B2EC-438E-BC49-4ECF295FD443}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{3C27CC36-B2EC-438E-BC49-4ECF295FD443}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{3C27CC36-B2EC-438E-BC49-4ECF295FD443}.Debug|iPhoneSimulator.Deploy.0 = Debug|Any CPU
 		{3C27CC36-B2EC-438E-BC49-4ECF295FD443}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C27CC36-B2EC-438E-BC49-4ECF295FD443}.Release|Any CPU.Build.0 = Release|Any CPU

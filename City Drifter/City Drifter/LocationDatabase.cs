@@ -41,7 +41,7 @@ namespace City_Drifter
 
         public Task<List<LocationItem>> GetLocationsVisited()
         {
-            return Database.QueryAsync<LocationItem>("SELECT * FROM [LocationItem] GROUP BY [Country], [State], [City]");
+            return Database.QueryAsync<LocationItem>("SELECT * FROM [LocationItem] GROUP BY [Country], [State], [City] ORDER BY ID");
         }
 
         public Task<List<LocationItem>> GetRoadsDone(String country, String state, String city, String travelMode)

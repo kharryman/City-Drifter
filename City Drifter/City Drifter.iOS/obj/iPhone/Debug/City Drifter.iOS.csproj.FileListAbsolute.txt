@@ -64,7 +64,9 @@ C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\actool\_PartialAppManifest.items
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CheckBlack.png.ResolveUTIs.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\Contents.json.ResolveUTIs.stamp
+C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\CheckWhite.png.ResolveUTIs.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\pointer.png.ResolveUTIs.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\Icon1024.png.ResolveUTIs.stamp
 C:\Users\Keith Harryman\source\repos\City Drifter\City Drifter\City Drifter.iOS\obj\iPhone\Debug\Icon180.png.ResolveUTIs.stamp

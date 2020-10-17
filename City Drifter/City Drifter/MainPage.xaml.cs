@@ -17,6 +17,7 @@ using Xamarin.Forms.GoogleMaps;
 using Position = Xamarin.Forms.GoogleMaps.Position;
 using System.Linq;
 using TouchTracking;
+using System.Globalization;
 
 namespace City_Drifter
 {
@@ -24,20 +25,93 @@ namespace City_Drifter
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
 
-
-    public class MyLocation
+    public class ListviewDropdown
     {
-        public string DisplayName { get; set; }
+        public string displayText { get; set; } // Text to display in ListView
+        public bool isSelected { get; set; } // Flag, if item is selected or not
+        public int iIndex { get; set; }  // Own index to handle the entrys -> see code
+        public string selectedIcon { get; set; } // Name of the Icon
     }
 
+    public class ListviewLocationDropdown
+    {
+        public int ID { get; set; } // Row ID
+        public string displayText { get; set; } // Text to display in ListView
+        public string Country { get; set; }
+        public string State { get; set; }
+        public string City { get; set; }
+        public bool isSelected { get; set; } // Flag, if item is selected or not
+        public int iIndex { get; set; }  // Own index to handle the entrys -> see code
+        public string selectedIcon { get; set; } // Name of the Icon
+    }
+
+    class ListViewCell : ViewCell
+    {
+        public ListViewCell() // Spezial-definition 
+        {
+            var myLabel = new Label();
+            myLabel.SetBinding(Label.TextProperty, "displayText");
+            myLabel.VerticalOptions = LayoutOptions.Center;
+            myLabel.BindingContextChanged += (sender, e) =>
+            {
+            };
+            var myIcon = new Image();
+            myIcon.SetBinding(Image.SourceProperty, new Binding("selectedIcon", BindingMode.OneWay, new StringToImageConverter()));
+            //                 
+            // pattform-specific settings -> depends on Icon -> not yet finished
+            switch (Device.RuntimePlatform)
+            {
+                case "WinPhone":
+                    myIcon.VerticalOptions = LayoutOptions.Center;
+                    myLabel.Font = Font.SystemFontOfSize(30);
+                    break;
+                case "iOS":
+                    myIcon.HeightRequest = 15;
+                    myIcon.VerticalOptions = LayoutOptions.Center;
+                    break;
+                case "Android":
+                    myIcon.HeightRequest = 15;
+                    myIcon.VerticalOptions = LayoutOptions.Center;
+                    break;
+
+            }
+            var s = new StackLayout();
+            s.Orientation = StackOrientation.Horizontal; // Element horizontal anordnen
+                                                         //var s = new TableView();
+            s.Children.Add(myIcon);
+            s.Children.Add(myLabel);
+            this.View = s;
+        }
+    }
+
+    public class StringToImageConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var filename = (string)value;
+            return ImageSource.FromFile(filename);
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
 
     public partial class MainPage : ContentPage
     {
         public string tag = "MainPage";
         public Boolean isTab = false;
-        ObservableCollection<MyLocation> locations = new ObservableCollection<MyLocation>();
-        public ObservableCollection<MyLocation> Locations { get { return locations; } }
+        //ObservableCollection<String> locations = new ObservableCollection<String>();
+        //public ObservableCollection<String> Locations { get { return locations; } }
+
+        ObservableCollection<String> provinces = new ObservableCollection<String>();
+        //public ObservableCollection<String> Provinces { get { return provinces; } }
+
+        List<City_Drifter.ListviewDropdown> statesDropdownlist;
+        List<City_Drifter.ListviewLocationDropdown> locationsDropdownlist;
+
+        City_Drifter.ListviewLocationDropdown selectedShowLocation;
 
         static LocationDatabase database;
 
@@ -64,6 +138,10 @@ namespace City_Drifter
         public string currentCountry{ get; set; }
         public string currentState { get; set; }
         public string currentCity{ get; set; }
+
+        public int mySelectedLocationID { get; set; }
+
+        //public strin
         public Plugin.Geolocator.Abstractions.Position oldPosition {get; set;}
 
         private bool isTabVisible = false;
@@ -77,6 +155,9 @@ namespace City_Drifter
                 OnPropertyChanged();
             }
         }
+
+        public bool isRandomMovements = false;
+
 
         private Xamarin.Forms.Rectangle myRect = new Xamarin.Forms.Rectangle(0, 0, 0.5, 1.0);
 
@@ -101,6 +182,7 @@ namespace City_Drifter
             //Compass.ReadingChanged += (s, e) => PointerImage.RotateTo(e.Reading.HeadingMagneticNorth, 200);
             //Compass.Start(SensorSpeed.UI, applyLowPassFilter: true);
             //LoadApplication(new screensize.App());
+            mySelectedLocationID = -1;
             isSetIcon = false;
             isGettingAddress = false;
             overlay.IsVisible = false;
@@ -116,7 +198,7 @@ namespace City_Drifter
             Log.Warning(tag, "overlayWidth=" + overlayWidth, ", overlayHeight=" + overlayHeight);
             BindingContext = this;
             //Xamarin.FormsMaps.Init("INSERT_AUTHENTICATION_TOKEN_HERE");
-            LocationView.ItemsSource = locations;
+            //LocationView.ItemsSource = locations;            
 
             //selectionView.ItemSource = new[]
             //{
@@ -125,12 +207,23 @@ namespace City_Drifter
 
             // ObservableCollection allows items to be added after ItemsSource
             // is set and the UI will react to changes
-            locations.Add(new MyLocation { DisplayName = "Madera" });
-            locations.Add(new MyLocation { DisplayName = "Sanger" });
-            locations.Add(new MyLocation { DisplayName = "Reedley" });
-            locations.Add(new MyLocation { DisplayName = "Merced" });
-            locations.Add(new MyLocation { DisplayName = "Kingsburg" });
-            locations.Add(new MyLocation { DisplayName = "Hanford" });
+
+            //ProvinceView.ItemsSource = provinces;
+            //provinces.Add("California");
+            //provinces.Add("Nevada");
+            //provinces.Add("Oregon");
+
+            statesDropdownlist = new List<City_Drifter.ListviewDropdown>();
+            locationsDropdownlist = new List<City_Drifter.ListviewLocationDropdown>();
+            //
+            SelectedProvinceButton.Text = "California ▼";
+            var province = new City_Drifter.ListviewDropdown() { displayText = "California", iIndex = 0, isSelected = true };
+            statesDropdownlist.Add(province);
+            province = new City_Drifter.ListviewDropdown() { displayText = "Nevada", iIndex = 1, isSelected = false };
+            statesDropdownlist.Add(province);
+            province = new City_Drifter.ListviewDropdown() { displayText = "Oregon", iIndex = 2, isSelected = false };
+            statesDropdownlist.Add(province);
+
 
 
             if (IsLocationAvailable())
@@ -140,12 +233,18 @@ namespace City_Drifter
                     Label = "ME!"
                 };
                 map.Pins.Add(mySelf);
+                //ADD LOCATIONS:                
+
                 _ = StartListening();
                 TouchEffect touchEffect = new TouchEffect();
                 touchEffect.TouchAction += OnTouchEffectAction;
                 map.Effects.Add(touchEffect);
             }
+
+            //ProvinceView.ItemsSource.
         }
+        
+        
 
         async private Task loadMap()
         {
@@ -206,6 +305,7 @@ namespace City_Drifter
         }
 
 
+
         async Task StartListening()
         {
             if (CrossGeolocator.Current.IsListening)
@@ -254,27 +354,19 @@ namespace City_Drifter
                     Location sourceCoordinates = new Location(oldPosition.Latitude, oldPosition.Longitude);
                     Location destinationCoordinates = new Location(position.Latitude, position.Longitude);
                     double distance = Location.CalculateDistance(sourceCoordinates, destinationCoordinates, DistanceUnits.Kilometers);
-                    double distanceThreshold = walkingSwitch.IsToggled == false ? 0.005 : 0.100;
+                    double distanceThreshold = walkingSwitch.IsToggled == false ? 0.020 : 0.100;
                     Console.WriteLine($"Distance = " + distance);
-                    Random rg = new Random();
-                    int myR = rg.Next(0, 10);
-                    if (distance >= distanceThreshold || myR > 7)//IF MORE THAN 250 METERS: SAVE TO DATABASE:
+                    // APP_DEBUG -----------:
+                    int myR = 10;
+                    if (isRandomMovements == true)
                     {
-                        Console.WriteLine($"ADDING POLYLINE !!!");
-                        var polyline = new Xamarin.Forms.GoogleMaps.Polyline();
-                        polyline.StrokeColor = Color.Blue;
-                        polyline.StrokeWidth = 2f;
-                        // APP_DEBUG X : 
-                        var myRLat = .005 + ((rg.Next(-5, 5)) * 0.01);
-                        var myRLng = .005 + ((rg.Next(-5, 5)) * 0.01);
-                        position.Latitude += myRLat;
-                        position.Longitude += myRLng;
-                        // 
-                        polyline.Positions.Add(new Position(oldPosition.Latitude , oldPosition.Longitude));
-                        polyline.Positions.Add(new Position(position.Latitude, position.Longitude));
-                        map.Polylines.Add(polyline);
-                        Console.WriteLine($"ADDED POLYLINE !!!");
-                        oldPosition = position;
+                        Random rg = new Random();
+                        myR = rg.Next(0, 10);
+                    }
+                    Console.WriteLine($"myR = " + myR);
+                    //-------------------------
+                    if (distance >= distanceThreshold || myR>7)//IF MORE THAN 250 METERS: SAVE TO DATABASE:
+                    {
                         if (!isGettingAddress)
                         {
                             isGettingAddress = true;
@@ -330,10 +422,28 @@ namespace City_Drifter
                         oldPosition = position;
                         Console.WriteLine($"SET oldPosition = " + oldPosition.Latitude + ", " + oldPosition.Longitude);
                         addDatabasePolylines(placemark.CountryName, placemark.AdminArea, placemark.Locality, travelMode);
+                    }                    
+                    Console.WriteLine($"ADDING POLYLINE !!!");
+                    var polyline = new Xamarin.Forms.GoogleMaps.Polyline();
+                    polyline.StrokeColor = Color.Blue;
+                    polyline.StrokeWidth = 2f;
+                    if (isRandomMovements == true)
+                    {
+                        Random rg = new Random();
+                        var myRLat = .005 + ((rg.Next(-5, 5)) * 0.01);
+                        var myRLng = .005 + ((rg.Next(-5, 5)) * 0.01);
+                        position.Latitude += myRLat;
+                        position.Longitude += myRLng;
                     }
-                    isGettingAddress = false;
+                    // 
+                    polyline.Positions.Add(new Position(oldPosition.Latitude, oldPosition.Longitude));
+                    polyline.Positions.Add(new Position(position.Latitude, position.Longitude));
+                    map.Polylines.Add(polyline);
+                    Console.WriteLine($"ADDED POLYLINE !!!");
+                    oldPosition = position;
                     var myDatabaseLocation = new LocationItem { Travel_Mode = travelMode, Country = placemark.CountryName, State = placemark.AdminArea, City = placemark.Locality, Latitude = position.Latitude, Longitude = position.Longitude };
-                    Database.SaveItemAsync(myDatabaseLocation);
+                    await Database.SaveItemAsync(myDatabaseLocation);
+                    isGettingAddress = false;
                 }//PLACEMARK IS NULL!:
                 else
                 {
@@ -373,14 +483,20 @@ namespace City_Drifter
             if (travelledLocations.Result.Count > 0)
             {
                 var polyline = new Xamarin.Forms.GoogleMaps.Polyline();
-                polyline.StrokeColor = Color.Blue;
-                polyline.StrokeWidth = 2f;
-                for (var i = 0; i < travelledLocations.Result.Count; i++)
+                var lastPosition = new Position(travelledLocations.Result[0].Latitude, travelledLocations.Result[0].Longitude);
+                var newPosition = new Position();
+                for (var i = 1; i < travelledLocations.Result.Count; i++)
                 {
+                    polyline = new Xamarin.Forms.GoogleMaps.Polyline();
+                    polyline.StrokeColor = Color.Blue;
+                    polyline.StrokeWidth = 2f;
+                    polyline.Positions.Add(lastPosition);
+                    newPosition = new Position(travelledLocations.Result[i].Latitude, travelledLocations.Result[i].Longitude);
                     Console.WriteLine($"ADDING POLYLINE LATITUDE = " + travelledLocations.Result[i].Latitude + $", LONGITUDE = " + travelledLocations.Result[i].Longitude);
-                    polyline.Positions.Add(new Position(travelledLocations.Result[i].Latitude, travelledLocations.Result[i].Longitude));
-                }
-                map.Polylines.Add(polyline);
+                    polyline.Positions.Add(newPosition);
+                    lastPosition = newPosition;
+                    map.Polylines.Add(polyline);
+                }                
                 Console.WriteLine($"addDatabasePolylines ADDED DATABASE POLYLINES!!!");
             }
         }
@@ -408,7 +524,177 @@ namespace City_Drifter
             base.OnAppearing();
             //_ = loadMap();
         }
+
+
+
+        public void showDownloadDropdown(object sender, EventArgs e)
+        {
+            Console.WriteLine("showDownloadDropdown called");
+            downloadListviewLayout.IsVisible = true;
+            downloadListview.ItemsSource = statesDropdownlist;
+            downloadListview.ItemTemplate = new DataTemplate(typeof(ListViewCell)); // Update page
+            downloadListview.ItemTapped += async (listviewSender, listviewEventArgs) =>
+            {
+                var LVElement = (City_Drifter.ListviewDropdown)listviewEventArgs.Item;
+                if (LVElement.isSelected) // Item is selected already
+                {
+                    statesDropdownlist[LVElement.iIndex].isSelected = false;
+                }
+                else
+                {
+                    statesDropdownlist[LVElement.iIndex].isSelected = true;
+                    SelectedProvinceButton.Text = LVElement.displayText + " ▼";
+                    // For iOS -> black check-icon, for Android and WP -> white check-icon
+                    if (Device.RuntimePlatform.Equals("iOS")) { statesDropdownlist[LVElement.iIndex].selectedIcon = "CheckBlack.png"; } else { statesDropdownlist[LVElement.iIndex].selectedIcon = "CheckWhite.png"; }
+                }
+                foreach (City_Drifter.ListviewDropdown dropdownItemLooped in statesDropdownlist)
+                {
+                    if (dropdownItemLooped.iIndex != LVElement.iIndex)
+                    {
+                        dropdownItemLooped.isSelected = false;
+                        dropdownItemLooped.selectedIcon = "";
+                    }
+                }
+                downloadListview.ItemTemplate = new DataTemplate(typeof(ListViewCell)); // Update Page
+                await Task.Delay(500);
+                downloadListviewLayout.IsVisible = false;
+                //await Task.Delay(200);
+                isLocationTab = false;
+                toggleShowOptionsTab();
+                //overlay.IsVisible = true;
+            };
+        }
+
+        public void showLocationsDropdown(object sender, EventArgs e)
+        {
+            Console.WriteLine("showLocationsDropdowncalled");
+            locationsListviewLayout.IsVisible = true;
+            locationsListview.ItemsSource = locationsDropdownlist;
+            locationsListview.ItemTemplate = new DataTemplate(typeof(ListViewCell)); // Update page
+            locationsListview.ItemTapped += async (listviewSender, listviewEventArgs) =>
+            {
+                var LVElement = (City_Drifter.ListviewLocationDropdown)listviewEventArgs.Item;
+                if (LVElement.isSelected) // Item is selected already
+                {
+                    locationsDropdownlist[LVElement.iIndex].isSelected = false;
+                }
+                else
+                {
+                    selectedShowLocation = locationsDropdownlist[LVElement.iIndex];
+                    locationsDropdownlist[LVElement.iIndex].isSelected = true;
+                    mySelectedLocationID = LVElement.ID;
+                    Console.WriteLine($"mySelectedLocationID = " + mySelectedLocationID);
+                    SelectedLocationButton.Text = LVElement.displayText + " ▼";
+                    // For iOS -> black check-icon, for Android and WP -> white check-icon
+                    if (Device.RuntimePlatform.Equals("iOS")) { locationsDropdownlist[LVElement.iIndex].selectedIcon = "CheckBlack.png"; } else { locationsDropdownlist[LVElement.iIndex].selectedIcon = "CheckWhite.png"; }
+                }
+                foreach (City_Drifter.ListviewLocationDropdown dropdownItemLooped in locationsDropdownlist)
+                {
+                    if (dropdownItemLooped.iIndex != LVElement.iIndex)
+                    {
+                        dropdownItemLooped.isSelected = false;
+                        dropdownItemLooped.selectedIcon = "";
+                    }
+                }
+                locationsListview.ItemTemplate = new DataTemplate(typeof(ListViewCell)); // Update Page
+                await Task.Delay(500);
+                locationsListviewLayout.IsVisible = false;
+                //await Task.Delay(200);
+                isLocationTab = false;
+                toggleShowOptionsTab();
+                //overlay.IsVisible = true;
+            };
+        }
+
+
+        async public void DownloadProvince(object sender, EventArgs e)
+        {
+            Console.WriteLine($"DownloadProvince called.");
+            toggleShowOptionsTab();
+        }
+
+        async public void ShowRoads(object sender, EventArgs e)
+        {
+            Console.WriteLine($"ShowRoads called.");
+            //selectedShowLocation            
+            //TO DO : 1) Stop listening, 2) Remove position of your marker 3) Show map, bounds in polylines, 4) draw polylines:
+            await StopListening();
+            //2:
+            mySelf.Position = new Position(0, 0);
+            //3:
+            toggleShowOptionsTab();
+            showRoadMap();
+        }
+
+        public void showRoadMap()
+        {
+            Console.WriteLine($"showRoadMap called");
+            //LatLng marker1LatLng = new LatLng(marker1lat, marker1lng);
+            //LatLngBounds.Builder b = new LatLngBounds.Builder().Include(marker1LatLng);
+            //map.MoveCamera(CameraUpdateFactory.NewLatLngBounds(b.Build(), 120));
+            map.Polylines.Clear();
+            String travelMode = walkingSwitch.IsToggled == false ? "WALKING" : "DRIVING";
+            var travelledLocations = Database.GetRoadsDone(selectedShowLocation.Country, selectedShowLocation.State, selectedShowLocation.City, travelMode);
+            Console.WriteLine($"addDatabasePolylines FOUND " + travelledLocations.Result.Count + " LINES MOVED.");
+            if (travelledLocations.Result.Count > 0)
+            {
+                var polyline = new Xamarin.Forms.GoogleMaps.Polyline();
+                var lastPosition = new Position(travelledLocations.Result[0].Latitude, travelledLocations.Result[0].Longitude);
+                var newPosition = new Position();
+                var mostWest = travelledLocations.Result[0].Longitude;
+                var mostEast = travelledLocations.Result[0].Longitude;
+                var mostNorth = travelledLocations.Result[0].Latitude;
+                var mostSouth = travelledLocations.Result[0].Latitude;
+                for (var i = 1; i < travelledLocations.Result.Count; i++)
+                {
+                    polyline = new Xamarin.Forms.GoogleMaps.Polyline();
+                    polyline.StrokeColor = Color.Blue;
+                    polyline.StrokeWidth = 2f;
+                    polyline.Positions.Add(lastPosition);
+                    newPosition = new Position(travelledLocations.Result[i].Latitude, travelledLocations.Result[i].Longitude);
+                    if (travelledLocations.Result[i].Latitude < mostSouth)
+                    {
+                        mostSouth= travelledLocations.Result[i].Latitude;
+                    }
+                    if (travelledLocations.Result[i].Latitude > mostNorth)
+                    {
+                        mostNorth = travelledLocations.Result[i].Latitude;
+                    }
+                    if (travelledLocations.Result[i].Longitude > mostEast)
+                    {
+                        mostEast= travelledLocations.Result[i].Longitude;
+                    }
+                    if (travelledLocations.Result[i].Longitude < mostWest)
+                    {
+                        mostWest= travelledLocations.Result[i].Longitude;
+                    }
+                    Console.WriteLine($"showRoadMap ADDING POLYLINE LATITUDE = " + travelledLocations.Result[i].Latitude + $", LONGITUDE = " + travelledLocations.Result[i].Longitude);
+                    polyline.Positions.Add(newPosition);
+                    lastPosition = newPosition;
+                    map.Polylines.Add(polyline);
+                }
+                Console.WriteLine($"showRoadMap mostSouth = " + mostSouth + $", mostWest= " + mostWest+ $", mostNorth = " + mostNorth + $", mostEast = " + mostEast);
+                Position southwestBound = new Position(mostSouth, mostWest);
+                Position northeastBound = new Position(mostNorth, mostEast);
+                var bounds = new Bounds(southwestBound, northeastBound);
+                map.MoveToRegion(MapSpan.FromBounds(bounds));
+                Console.WriteLine($"showRoadMap ADDED DATABASE POLYLINES!!!");
+            }
+        }
+
+        
+        public void ResumeDrifting(object sender, EventArgs e)
+        {
+            toggleShowOptionsTab();
+            StartListening();
+        }
+
         async public void ShowOptionsTab(object sender, EventArgs e)
+        {
+            toggleShowOptionsTab();
+        }
+
+        async public void toggleShowOptionsTab()
         {
             //isTab = !isTab;            
             isLocationTab = !isLocationTab;
@@ -423,13 +709,37 @@ namespace City_Drifter
                 await overlay.LayoutTo(new Rectangle(0, 0, overlayWidth, overlayHeight), 250, Easing.Linear);
                 //await overlay.LayoutTo(new Rectangle(0, 0, 0.5, 1.0), 1000, Easing.Linear);
                 Log.Warning(tag, "Setiting rect to half width");
-                //TODO: GET LOCATIONS(COUNTRY, STATE, CITY)
-                var locationsVistited = Database.GetLocationsVisited();
-                locations.Clear();
-                Console.WriteLine("locationsVisited LENGTH = " + locationsVistited.Result.Count);
-                for (var i=0;i< locationsVistited.Result.Count; i++)
+                //SET LOCATIONS VISITED:
+                var locationsVisited = await Database.GetLocationsVisited();
+                locationsDropdownlist.Clear();
+                City_Drifter.ListviewLocationDropdown locationLoop;
+                Console.WriteLine("locationsVisited LENGTH = " + locationsVisited.Count);
+                bool isSelectLocation = false;
+                int selectedLocationIndex = 0;
+                for (var i = 0; i < locationsVisited.Count; i++)
                 {
-                    locations.Add(new MyLocation { DisplayName = "Country: " + locationsVistited.Result[i].Country + ", Stagte: " + locationsVistited.Result[i].State + ", City: " + locationsVistited.Result[i].City });
+                    Console.WriteLine($"locationsVisited[i].ID = " + locationsVisited[i].ID + $", mySelectedLocationID = " + mySelectedLocationID);
+                    if (locationsVisited[i].ID == mySelectedLocationID)
+                    {
+                        Console.WriteLine($"isSelectLocation IS TRUE !!!");
+                        isSelectLocation = true;
+                        selectedLocationIndex = i;
+                    }
+                    else
+                    {
+                        isSelectLocation = false;
+                    }
+                    locationLoop = new City_Drifter.ListviewLocationDropdown() { ID = locationsVisited[i].ID, iIndex = i, isSelected = isSelectLocation, Country = locationsVisited[i].Country, State = locationsVisited[i].State, City = locationsVisited[i].City, displayText = "Country: " + locationsVisited[i].Country + ", State: " + locationsVisited[i].State + ", City: " + locationsVisited[i].City };
+                    locationsDropdownlist.Add(locationLoop);
+                }
+                if (locationsDropdownlist.Count > 0)
+                {
+                    SelectedLocationButton.Text = locationsDropdownlist[selectedLocationIndex].displayText + " ▼";
+                    ShowRoadsButton.IsEnabled = true;
+                }
+                else
+                {
+                    ShowRoadsButton.IsEnabled = false;
                 }
             }
             else
@@ -444,6 +754,7 @@ namespace City_Drifter
                 Log.Warning(tag, "Setiting rect to 0 width");
             }
         }
+
 
         async void OnTouchEffectAction(object sender, TouchActionEventArgs args)
         {

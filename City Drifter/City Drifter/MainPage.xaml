@@ -42,16 +42,45 @@
                      BackgroundColor="#E5F6FA"
                      IsVisible="True"
                      HorizontalOptions="StartAndExpand">
+
+                <Label Text="Download State:" FontSize="20" FontAttributes="Bold">
+                </Label>
+                <Button x:Name="SelectedProvinceButton" Clicked="showDownloadDropdown" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Text="" BorderColor="AliceBlue" BorderWidth="3">
+                </Button>
+                <Button VerticalOptions="Center" HorizontalOptions="FillAndExpand" BackgroundColor="LightBlue" BorderColor="AliceBlue" BorderWidth="3"
+                Text="Download State" Clicked="DownloadProvince">
+                </Button>
+
                 <Label Text="Locations:" FontSize="20" FontAttributes="Bold">
-                    </Label>
-                <ListView x:Name="LocationView"
-            ItemsSource="{Binding Locations}" HasUnevenRows="True"
-              SeparatorVisibility="None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding DisplayName}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
+                </Label>
+                <Button x:Name="SelectedLocationButton" Clicked="showLocationsDropdown" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Text="" BorderColor="AliceBlue" BorderWidth="3">
+                </Button>
+
+                <Button x:Name="ShowRoadsButton" VerticalOptions="Center" HorizontalOptions="FillAndExpand" BackgroundColor="LightBlue" BorderColor="AliceBlue" BorderWidth="3"
+                Text="Show Roads" Clicked="ShowRoads">
+                </Button>
+
+                <Button VerticalOptions="Center" HorizontalOptions="FillAndExpand" BackgroundColor="LightBlue" BorderColor="AliceBlue" BorderWidth="3" Text="Resume Drifting" Clicked="ResumeDrifting">
+                </Button>
+            </StackLayout>
+            <!-- DOWNLOAD LIST VIEW -->
+            <StackLayout x:Name="downloadListviewLayout"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0"
+                     AbsoluteLayout.LayoutFlags="All"
+                     BackgroundColor="#E5F6FA"
+                     IsVisible="False"
+                     HorizontalOptions="StartAndExpand">
+                <ListView x:Name="downloadListview" HeightRequest="200">
+                </ListView>
+            </StackLayout>
+            <!-- LOCATIONS LIST VIEW -->
+            <StackLayout x:Name="locationsListviewLayout"
+                     AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0"
+                     AbsoluteLayout.LayoutFlags="All"
+                     BackgroundColor="#E5F6FA"
+                     IsVisible="False"
+                     HorizontalOptions="StartAndExpand">
+                <ListView x:Name="locationsListview" HeightRequest="200">
                 </ListView>
             </StackLayout>
         </AbsoluteLayout>
